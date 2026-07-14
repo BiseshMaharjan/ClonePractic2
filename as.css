@@ -3,12 +3,28 @@
   --teal-dark: #3fb8af;
   --dark: #1c1c1c;
   --cream: #faf9f7;
+  --grey: #777;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--dark);
   overflow-x: hidden;
+}
+
+/* Keep content confined to a consistent, narrower column on all screen sizes
+   (matches the original design's content width instead of Bootstrap's
+   default container, which keeps growing wider on large screens) */
+.container {
+  max-width: 960px;
+}
+
+/* Navbar spans the full page width, with the logo and hamburger icon
+   pinned to the true left/right screen edges (not the narrower content column) */
+.navbar-wrap {
+  
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .logo-font {
@@ -112,7 +128,7 @@ body {
 /* Section headings */
 .section-heading {
   font-family: 'Caveat', cursive;
-  font-size: 2.6rem;
+  font-size: 38px;
   font-weight: 600;
 }
 
@@ -246,8 +262,31 @@ body {
   background: var(--cream);
 }
 
+/* Swap the usual heading/body font treatment: title takes the small
+   italic style, subtext takes the big script style — sizes unchanged */
+.newsletter .section-heading {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #666;
+}
+
+.newsletter p { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 100; color: var(--grey); font-size: 1rem; }
+
+/* Quick Contact: same swapped font treatment as Newsletter */
+#contact .section-heading {
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #666;
+}
+
+#contact p { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 100; color: var(--grey); font-size: 1rem; }
+
 .newsletter-form {
   max-width: 1040px;
+  width: 100%;
   margin: 0 auto;
   flex-wrap: nowrap;
 }
@@ -256,12 +295,32 @@ body {
   border-radius: 4px;
   border: 1px solid #ccc;
   padding: 0.6rem 1.2rem;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .newsletter-form button {
   border-radius: 4px;
   padding: 0.6rem 1.6rem;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+  .newsletter-form {
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .newsletter-form input {
+    flex: 1 1 100%;
+    margin-right: 0 !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .newsletter-form button {
+    flex: 1 1 100%;
+  }
 }
 
 .newsletter-btn {
